@@ -23,15 +23,12 @@ class WebSocketBinanceApiCubitCubit
 
       channel.stream.listen((message) {
         Map coinsData = jsonDecode(message);
-        debugPrint(coinsData.toString());
 
         Coins coins = Coins(
             bitCoin: coinsData['p'],
             etherium: coinsData['p'],
             tether: coinsData['p']);
         emit(WebSocketBinanceApiCubitLoaded(coins: coins));
-        debugPrint(coins.bitCoin);
-        debugPrint(coins.etherium);
       });
     } catch (e) {
       emit(WebSocketBinanceApiCubitException());
